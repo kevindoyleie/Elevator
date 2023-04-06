@@ -63,4 +63,30 @@ public class ElevatorTest
         assertEquals(Elevator.Action.NO_OP, elevator.getAction());
         assertEquals(10, elevator.getFloor());
     }
+
+    @Test
+    public void whenGoUpAndTheBackDown()
+    {
+        elevator.setFloor(3);
+        elevator.requestFloor(6);
+        elevator.requestFloor(1);
+
+        assertEquals(16, elevator.getActionsSize());
+        assertEquals(Elevator.Action.OPEN_CLOSE, elevator.getAction());
+        assertEquals(Elevator.Action.UP_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.UP_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.UP_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.UP_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.OPEN_CLOSE, elevator.getAction());
+        assertEquals(Elevator.Action.NO_OP, elevator.getAction());
+        assertEquals(Elevator.Action.OPEN_CLOSE, elevator.getAction());
+        assertEquals(Elevator.Action.DOWN_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.DOWN_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.DOWN_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.DOWN_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.DOWN_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.DOWN_ONE, elevator.getAction());
+        assertEquals(Elevator.Action.OPEN_CLOSE, elevator.getAction());
+        assertEquals(Elevator.Action.NO_OP, elevator.getAction());
+    }
 }
